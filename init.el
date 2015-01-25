@@ -151,6 +151,8 @@
 
 (require 'init-helm)
 
+(require 'init-projectile)
+
 (provide 'init)
 
 ;; Local Variables:
