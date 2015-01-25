@@ -153,6 +153,8 @@
 
 (require 'init-projectile)
 
+(powerline-vim-theme)
+
 (provide 'init)
 
 ;; Local Variables:
