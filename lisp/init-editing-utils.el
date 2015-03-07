@@ -152,21 +152,24 @@
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
 (require-package 'ace-jump-mode)
-(global-set-key (kbd "C-;") 'ace-jump-mode)
-(global-set-key (kbd "C-:") 'ace-jump-word-mode)
+(global-set-key (kbd "C-x j") 'ace-jump-mode)
+(global-set-key (kbd "C-x w") 'ace-jump-word-mode)
 
 
-(require-package 'multiple-cursors)
+;; Do not use multiple-cursors for now
+
+;; (require-package 'multiple-cursors)
 ;; multiple-cursors
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-+") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; From active region to multiple cursors:
-(global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-c c c") 'mc/edit-lines)
-(global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+;; (global-set-key (kbd "C-c c r") 'set-rectangular-region-anchor)
+;; (global-set-key (kbd "C-c c c") 'mc/edit-lines)
+;; (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
+;; (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
 
 
 ;; Train myself to use M-f and M-b instead
@@ -345,5 +348,17 @@ With arg N, insert N newlines."
 (guide-key-mode 1)
 (diminish 'guide-key-mode)
 
+
+
+(defun evilcvn-change-symbol-in-defun ()
+  "mark the region in defun (definition of function) and use string replacing UI in evil-mode to replace the symbol under cursor"
+  (interactive)
+  (let ((old (thing-at-point 'symbol)))
+    (mark-defun)
+    (unless (evil-visual-state-p)
+      (evil-visual-state))
+    (evil-ex (concat "'<,'>s/" (if (= 0 (length old)) "" "\<\(") old (if (= 0 (length old)) "" "\)\>/")))))
+
+(global-set-key (kbd "C-c ; s") 'evilcvn-change-symbol-in-defun)
 
 (provide 'init-editing-utils)
