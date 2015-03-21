@@ -147,11 +147,17 @@
 
 (require 'init-evil)
 
+(require 'init-evil-leader)
+
 (require 'init-lispy)
 
 (require 'init-helm)
 
 (require 'init-projectile)
+
+(require 'init-keybindings)
+
+(require 'init-closure-template-html-mode)
 
 (provide 'init)
 
