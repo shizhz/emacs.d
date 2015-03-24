@@ -28,7 +28,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-preload-local nil t)
 
-;;----------------------------------------------------------------------------
+;;--------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
@@ -53,23 +53,23 @@
 
 (require 'init-recentf)
 (require 'init-ido)
-(require 'init-hippie-expand)
+;; (require 'init-hippie-expand)
 (require 'init-auto-complete)
-(require 'init-windows)
-(require 'init-sessions)
+;; (require 'init-windows)
+;; (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
 
 (require 'init-editing-utils)
 
-(require 'init-vc)
+;; (require 'init-vc)
 ;; (require 'init-darcs)
 (require 'init-git)
 (require 'init-github)
 
-(require 'init-compile)
-(require 'init-crontab)
-(require 'init-textile)
+;; (require 'init-compile)
+;; (require 'init-crontab)
+;; (require 'init-textile)
 (require 'init-markdown)
 ;; (require 'init-csv)
 ;; (require 'init-erlang)
@@ -80,11 +80,11 @@
 (require 'init-html)
 (require 'init-css)
 ;; (require 'init-haml)
-(require 'init-python-mode)
+;; (require 'init-python-mode)
 ;; (require 'init-haskell)
 ;; (require 'init-ruby-mode)
 ;; (require 'init-rails)
-(require 'init-sql)
+;; (require 'init-sql)
 
 (require 'init-paredit)
 (require 'init-lisp)
@@ -100,13 +100,13 @@
 (require 'init-misc)
 
 (require 'init-dash)
-(require 'init-ledger)
+;; (require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
-(require-package 'gnuplot)
+;; (require-package 'gnuplot)
 ;; (require-package 'lua-mode)
-(require-package 'htmlize)
-(require-package 'dsvn)
+;; (require-package 'htmlize)
+;; (require-package 'dsvn)
 (when *is-a-mac*
   (require-package 'osx-location))
 (require-package 'regex-tool)
@@ -158,6 +158,8 @@
 (require 'init-keybindings)
 
 (require 'init-closure-template-html-mode)
+
+(require 'init-jedi)
 
 (provide 'init)
 
