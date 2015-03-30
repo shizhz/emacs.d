@@ -3,4 +3,8 @@
 (global-set-key (kbd "C-c m") 'helm-mark-ring)
 (global-set-key (kbd "C-c ; m") 'helm-all-mark-rings)
 
+
+(global-set-key (kbd "C-c ; n") 'neotree-toggle)
+
+
 (provide 'init-keybindings)

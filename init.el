@@ -161,6 +161,12 @@
 
 (require 'init-jedi)
 
+(require 'init-yas)
+
+(require 'init-emmet-mode)
+
+(require 'init-web-mode)
+
 (provide 'init)
 
 ;; Local Variables:
