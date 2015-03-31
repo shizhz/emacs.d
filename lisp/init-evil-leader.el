@@ -5,13 +5,18 @@
 
 (setq evil-leader/leader ",")
 
+(cl-defun dired-goto-current-directory ()
+  (interactive)
+  (dired default-directory))
+
 (evil-leader/set-key
-  "f" 'helm-projectile-find-file
-  "g" 'helm-projectile-grep
-  "b" 'helm-projectile-switch-to-buffer
+  "ff" 'helm-projectile-find-file
+  "ft" 'helm-projectile-grep
+  "fd" 'dired-goto-current-directory
+  "fl" 'find-grep-dired-within-specified-filetype
+  "bb" 'helm-projectile-switch-to-buffer
   "c" 'projectile-commander
-  "e" 'helm-projectile-recentf
-  "t" 'find-grep-dired-within-specified-filetype
+  "be" 'helm-projectile-recentf
   )
 
 (provide 'init-evil-leader)
