@@ -9,6 +9,9 @@
   "f" 'helm-projectile-find-file
   "g" 'helm-projectile-grep
   "b" 'helm-projectile-switch-to-buffer
+  "c" 'projectile-commander
+  "e" 'helm-projectile-recentf
+  "t" 'find-grep-dired-within-specified-filetype
   )
 
 (provide 'init-evil-leader)
