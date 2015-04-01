@@ -10,7 +10,6 @@
 
 (define-key evil-insert-state-map "\C-e" 'end-of-line)
 (define-key evil-insert-state-map "\C-k" 'kill-line)
-(define-key evil-insert-state-map "jk" 'evil-normal-state)
 (define-key evil-normal-state-map "\M-u" 'evil-scroll-up)
 
 (provide 'init-evil)

@@ -32,8 +32,11 @@
     (global-dired-hide-details-mode -1))
   (setq dired-recursive-deletes 'top)
   (define-key dired-mode-map [mouse-2] 'dired-find-file)
+
   (setq find-grep-options "-q -I")
   (setq find-options "! -name '*.pyc' ! -iname '#*#' ")
+  (setq-default dired-omit-files-p t)
+  (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$\\|*\\.pyc$\\|#*#")
 
 
   (add-hook 'dired-mode-hook
