@@ -3,6 +3,9 @@
 ;;; ----------------------------------------
 
 ;;; Code:
+(require-package 'helm-projectile)
+(require-package 'projectile)
+
 (require 'helm-projectile)
 
 (projectile-global-mode)

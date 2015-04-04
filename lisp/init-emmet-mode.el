@@ -1,3 +1,6 @@
+(require-package 'emmet-mode)
+(require-package 'helm-emmet)
+
 (require 'emmet-mode)
 (require 'helm-emmet)
 
