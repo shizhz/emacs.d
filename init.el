@@ -167,6 +167,8 @@
 
 (require 'init-web-mode)
 
+(require 'init-my-config)
+
 (provide 'init)
 
 ;; Local Variables:
