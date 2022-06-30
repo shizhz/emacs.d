@@ -4,7 +4,7 @@
 
 ;;; Code:
 (use-package go-mode
-  :hook (eglot)
+  :mode "\\.go\\'"
   )
 
 (provide 'init-go)

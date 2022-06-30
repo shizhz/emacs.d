@@ -10,12 +10,7 @@
           go-mode
           ) . format-all-mode)
   :config
-  (define-format-all-formatter gofumpt
-    (:executable "gofumpt")
-    (:languages "Go")
-    (:features)
-    (:format (format-all--buffer-easy executable)))
-  (setq format-all-formatters '(("Go" . gofumpt)))
+  (setq format-all-formatters '(("Go" goimports)))
   )
 
 (provide 'init-formatter)
