@@ -41,6 +41,14 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
+;;; use-package
+(setq use-package-always-ensure t)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile (require 'use-package))
+
 
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
@@ -166,6 +174,9 @@
 
 ;; Locales (setting them earlier in this file doesn't work in X)
 (require 'init-locales)
+
+;; Formatters
+(require 'init-formatter)
 
 ;; Allow users to provide an optional "init-local" containing personal settings
 (require 'init-local nil t)

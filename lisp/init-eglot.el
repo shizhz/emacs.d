@@ -13,6 +13,5 @@
 
 
 
-
 (provide 'init-eglot)
 ;;; init-eglot.el ends here
