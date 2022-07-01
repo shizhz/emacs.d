@@ -9,6 +9,11 @@
 
 (use-package eglot
   :hook ((go-mode) . eglot-ensure)
+  :config
+  (setq-default eglot-workspace-configuration
+                '((:gopls . (
+                             (gofumpt . t)
+                             ))))
   )
 
 (use-package consult-eglot)

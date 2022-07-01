@@ -9,8 +9,6 @@
   :hook ((
           go-mode
           ) . format-all-mode)
-  :config
-  (setq format-all-formatters '(("Go" goimports)))
   )
 
 (provide 'init-formatter)

@@ -68,7 +68,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
-(require 'init-flymake)
+;; (require 'init-flymake)
 (require 'init-eglot)
 
 (require 'init-recentf)
@@ -175,7 +175,7 @@
 ;; Locales (setting them earlier in this file doesn't work in X)
 (require 'init-locales)
 
-(require 'init-formatter)
+;; (require 'init-formatter)
 (require 'init-go)
 
 ;; Allow users to provide an optional "init-local" containing personal settings

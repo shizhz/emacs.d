@@ -23,8 +23,8 @@
   (setq evil-want-Y-yank-to-eol t)
   :config
   (define-key evil-normal-state-map (kbd "SPC SPC") 'execute-extended-command)
-  (define-key evil-insert-state-map (kbd "C-e") 'evil-end-of-line-or-visual-line)
-  (define-key evil-insert-state-map (kbd "C-a") 'evil-beginning-of-visual-line)
+  (define-key evil-insert-state-map (kbd "C-e") 'evil-end-of-line)
+  (define-key evil-insert-state-map (kbd "C-a") 'evil-first-non-blank)
   (evil-mode 1))
 
 ;;; Vim Bindings Everywhere else
