@@ -7,8 +7,9 @@
   :mode "\\.go\\'"
   :config
   (add-hook 'before-save-hook '(lambda ()
-                                 (call-interactively #'eglot-code-action-organize-imports)
+                                 ;; Don't change the order, otherwise eglot-code-action-organize-imports will raise an error if there no code action, which will interrupt the call to eglot-format
                                  (call-interactively #'eglot-format)
+                                 (call-interactively #'eglot-code-action-organize-imports)
                                  ))
   )
 
