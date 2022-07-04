@@ -27,14 +27,14 @@
     ("w" ace-window :color blue)
     ("v" (lambda ()
            (interactive)
-           (evil-window-vsplit)
-           (evil-window-right))
+           (split-window-right)
+           (windmove-right))
      "vert")
     ("V" clone-indirect-buffer-other-window :color blue)
     ("s" (lambda ()
            (interactive)
-           (evil-window-split)
-           (evil-window-down))
+           (split-window-below)
+           (windmove-down))
      "horz")
     ("e" kill-current-buffer)
     ("x" evil-window-delete)
@@ -56,5 +56,18 @@
   )
 
 (define-key evil-normal-state-map (kbd ",w") #'hydra-window/body)
+
+
+(defhydra hydra-comment ()
+  "comment"
+  ("l" comment-line)
+  ("d" comment-dwim)
+  ("b" comment-box :color blue)
+  ("r" comment-or-uncomment-region :colur blue)
+  ("q" nil "quit")
+  )
+
+(define-key evil-normal-state-map (kbd ",c") #'hydra-comment/body)
+(define-key evil-visual-state-map (kbd ",c") #'hydra-comment/body)
 
 (provide 'init-hydra)
