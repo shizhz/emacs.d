@@ -40,8 +40,7 @@
   (global-set-key (kbd "M-o") 'ace-window))
 
 ;;; Font
-(add-to-list 'default-frame-alist
-             '(font . "DejaVu Sans Mono-12"))
+;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
 ;;; Try to fix 'Error: Variable binding depth exceeds max-specpdl-size'
 (setq max-specpdl-size 13000)

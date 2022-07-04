@@ -7,7 +7,7 @@
 
 (use-package format-all
   :hook ((
-          go-mode
+          protobuf-mode
           ) . format-all-mode)
   )
 

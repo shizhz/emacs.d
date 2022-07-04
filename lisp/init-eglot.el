@@ -13,6 +13,7 @@
   (setq-default eglot-workspace-configuration
                 '((:gopls . ((gofumpt . t)
                              (usePlaceholders . t)
+                             (matcher . "CaseInsensitive")
                              (completeUnimported . t)
                              (annotations . ((bounds . t) (escape . t) (inline . t) (nil . t)))
                              (analyses . ((unusedparams . t) (unusedwrite . t)))

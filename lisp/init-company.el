@@ -21,6 +21,7 @@
     (define-key company-active-map (kbd "C-d") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "M-.") 'company-show-location)
     (setq-default company-dabbrev-other-buffers 'all
+                  company-dabbrev-code-ignore-case t
                   company-tooltip-align-annotations t))
   (global-set-key (kbd "M-C-/") 'company-complete)
   (when (maybe-require-package 'company-quickhelp)
