@@ -5,7 +5,6 @@
 
 (use-package protobuf-mode)
 
-
 (use-package ace-window
   :config
   (global-set-key (kbd "M-o") 'ace-window))
@@ -22,5 +21,9 @@
 ;;; To replace thr original C-x C-h
 (setq prefix-help-command #'embark-prefix-help-command)
 (global-set-key (kbd "C-s") #'consult-line)
+
+;;; Display relative line number, this needs Emacs version > 28
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
 
 (provide 'init-local)

@@ -14,6 +14,7 @@
   :init
   ;; allows for using cgn
   ;; (setq evil-search-module 'evil-search)
+  (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
@@ -44,20 +45,41 @@
     "Define easymotions for all motions evil defines by default"
     (define-key evil-motion-state-map (kbd prefix) avy-map))
 
-  (define-key avy-map "w" #'avy-goto-word-0)
-  (define-key avy-map "W" #'avy-goto-word-1)
-  (define-key avy-map "C" #'avy-goto-char)
-  (define-key avy-map "c" #'avy-goto-char-2)
-  (define-key avy-map "t" #'avy-goto-char-timer)
-  (define-key avy-map "l" #'avy-goto-line)
+  (define-key avy-map "jw" #'avy-goto-word-0)
+  (define-key avy-map "jW" #'avy-goto-word-1)
+  (define-key avy-map "jC" #'avy-goto-char)
+  (define-key avy-map "jc" #'avy-goto-char-2)
+  (define-key avy-map "jt" #'avy-goto-char-timer)
+  (define-key avy-map "jl" #'avy-goto-line)
   (avy-default-keybindings "SPC")
   )
+
+;;; Make text-exchange easy
+(use-package evil-exchange
+  :config
+  (setq evil-exchange-key (kbd "zx"))
+  (setq evil-exchange-cancel-key (kbd "zX"))
+  (evil-exchange-install))
+
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
+
+(use-package evil-traces
+  :config
+  (evil-traces-use-diff-faces) ; if you want to use diff's faces
+  (evil-traces-mode))
+
+;; (use-package evil-quick-diff
+;;   :init
+;;   (setq evil-quick-diff-key (kbd "zd"))
+;;   (setq evil-quick-diff-cancel-key (kbd "zD"))
+;;   (evil-quick-diff-install))
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
   :after evil
   :config
-  (setq evil-want-integration t)
   (evil-collection-init))
 
 (provide 'init-evil)
