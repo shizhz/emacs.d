@@ -41,13 +41,7 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
-;;; use-package
-(setq use-package-always-ensure t)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile (require 'use-package))
+(require 'init-package)
 
 
 ;; Allow users to provide an optional "init-preload-local.el"
