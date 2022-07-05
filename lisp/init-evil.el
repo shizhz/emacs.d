@@ -70,11 +70,12 @@
   (evil-traces-use-diff-faces) ; if you want to use diff's faces
   (evil-traces-mode))
 
-;; (use-package evil-quick-diff
-;;   :init
-;;   (setq evil-quick-diff-key (kbd "zd"))
-;;   (setq evil-quick-diff-cancel-key (kbd "zD"))
-;;   (evil-quick-diff-install))
+(use-package evil-quick-diff
+  :straight (:host github :repo "rgrinberg/evil-quick-diff" :pin "69c883720b30a892c63bc89f49d4f0e8b8028908")
+  :init
+  (setq evil-quick-diff-key (kbd "zd"))
+  (setq evil-quick-diff-cancel-key (kbd "zD"))
+  (evil-quick-diff-install))
 
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection

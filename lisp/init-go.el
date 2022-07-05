@@ -15,21 +15,21 @@
 
 (use-package go-tag
   :bind (:map go-mode-map
-              ("C-c t a" . go-tag-add)
-              ("C-c t r" . go-tag-remove))
+              ("C-c g a" . go-tag-add)
+              ("C-c g d" . go-tag-remove))
   :init (setq go-tag-args (list "-transform" "snakecase")))
 
 (use-package go-gen-test
   :bind (:map go-mode-map
-              ("C-c t g" . go-gen-test-dwim)))
+              ("C-c g g" . go-gen-test-dwim)))
 
 (use-package gotest
   :bind (:map go-mode-map
-              ("C-c t f" . go-test-current-file)
-              ("C-c t t" . go-test-current-test)
-              ("C-c t j" . go-test-current-project)
-              ("C-c t b" . go-test-current-benchmark)
-              ("C-c t c" . go-test-current-coverage)
-              ("C-c t x" . go-run)))
+              ("C-c g f" . go-test-current-file)
+              ("C-c g t" . go-test-current-test)
+              ("C-c g j" . go-test-current-project)
+              ("C-c g b" . go-test-current-benchmark)
+              ("C-c g c" . go-test-current-coverage)
+              ("C-c g r" . go-run)))
 
 (provide 'init-go)

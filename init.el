@@ -64,7 +64,8 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 ;; (require 'init-flymake)
-(require 'init-eglot)
+;; (require 'init-eglot)
+(require 'init-lsp-bridge)
 
 (require 'init-recentf)
 (require 'init-minibuffer)
