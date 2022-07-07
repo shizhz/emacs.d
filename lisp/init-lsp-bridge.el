@@ -1,4 +1,4 @@
-;;; init-go.el --- Full-featured IDE setup for golang          -*- lexical-binding: t; -*-
+;;; init-go.el ---  lsp-bridge setup -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -6,9 +6,6 @@
 
 (use-package posframe)
 
-(use-package yasnippet
-  :config
-  (yas-global-mode 1))
 
 (require 'lsp-bridge)
 (global-lsp-bridge-mode)

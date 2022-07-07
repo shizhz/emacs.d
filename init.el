@@ -41,7 +41,14 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
-(require 'init-package)
+;; (require 'init-package)
+;;; use-package	(require 'init-package)
+(setq use-package-always-ensure t)	
+
+(unless (package-installed-p 'use-package)	
+  (package-refresh-contents)	
+  (package-install 'use-package))	
+(eval-when-compile (require 'use-package))
 
 
 ;; Allow users to provide an optional "init-preload-local.el"
@@ -63,9 +70,10 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
+(require 'init-snippet)
 ;; (require 'init-flymake)
-;; (require 'init-eglot)
-(require 'init-lsp-bridge)
+(require 'init-eglot)
+;; (require 'init-lsp-bridge)
 
 (require 'init-recentf)
 (require 'init-minibuffer)

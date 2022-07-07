@@ -12,6 +12,7 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (with-eval-after-load 'company
     (diminish 'company-mode)
+    (setq company-show-numbers t)
     (define-key company-mode-map (kbd "M-/") 'company-complete)
     (define-key company-mode-map [remap completion-at-point] 'company-complete)
     (define-key company-mode-map [remap indent-for-tab-command] 'company-indent-or-complete-common)
@@ -21,7 +22,11 @@
     (define-key company-active-map (kbd "C-d") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "M-.") 'company-show-location)
     (setq-default company-dabbrev-other-buffers 'all
+                  completion-ignore-case t  ;; 补全时忽略大小写
                   company-dabbrev-code-ignore-case t
+                  company-idle-delay 0
+                  company-selection-wrap-around t
+                  company-show-quick-access t
                   company-tooltip-align-annotations t))
   (global-set-key (kbd "M-C-/") 'company-complete)
   (when (maybe-require-package 'company-quickhelp)

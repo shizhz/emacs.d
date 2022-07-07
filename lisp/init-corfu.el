@@ -9,6 +9,8 @@
   (corfu-separator ?\s)
   :init (global-corfu-mode))
 
+(use-package cape)
+
 (use-package emacs
   :init
   (setq completion-cycle-threshold 3)
