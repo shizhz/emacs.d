@@ -22,11 +22,7 @@
   (define-key eglot-mode-map (kbd "C-c e n") #'flymake-goto-next-error)
   (define-key eglot-mode-map (kbd "C-c e p") #'flymake-goto-prev-error)
   (define-key eglot-mode-map (kbd "C-c e r") #'eglot-rename)
-  ;; 参考：https://stackoverflow.com/questions/72601990/how-to-show-suggestions-for-yasnippets-when-using-eglot
-  ;; FIXME: 将company-yasnippet加入后补全时的浏览快捷键会被污染，禁用evil-mode则不会，暂时将下面代码注释掉
-  ;; (add-hook 'eglot-managed-mode-hook
-  ;;           (lambda ()
-  ;;             (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
+  (define-key eglot-mode-map (kbd "C-c e i") #'eglot-find-implementation)
   )
 
   (use-package consult-eglot)

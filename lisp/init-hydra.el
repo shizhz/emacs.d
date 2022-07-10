@@ -70,4 +70,17 @@
 (define-key evil-normal-state-map (kbd ",c") #'hydra-comment/body)
 (define-key evil-visual-state-map (kbd ",c") #'hydra-comment/body)
 
+(defhydra hydra-git-gutter ()
+  "Git Gutter"
+  ("n" git-gutter:next-hunk)
+  ("p" git-gutter:previous-hunk)
+  ("i" git-gutter:popup-hunk)
+  ("I" git-gutter:statistic)
+  ("x" git-gutter:revert-hunk)
+  ("s" git-gutter:stage-hunk)
+  ("q" nil "quit")
+  )
+(define-key evil-normal-state-map (kbd "C-c g") #'hydra-git-gutter/body)
+(define-key evil-visual-state-map (kbd "C-c g") #'hydra-git-gutter/body)
+
 (provide 'init-hydra)

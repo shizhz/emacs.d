@@ -23,7 +23,7 @@
   :config
   (define-key evil-normal-state-map (kbd "SPC SPC") 'execute-extended-command)
   (define-key evil-visual-state-map (kbd "SPC SPC") 'execute-extended-command)
-  (define-key evil-insert-state-map (kbd "C-e") 'evil-end-of-line)
+  (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
   (define-key evil-insert-state-map (kbd "C-a") 'evil-first-non-blank)
   (evil-mode 1))
 

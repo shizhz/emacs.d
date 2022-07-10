@@ -20,6 +20,10 @@
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-linux* (eq system-type 'gnu/linux))
+(defconst *is-windows* (or (eq system-type 'windows-nt)
+                           (eq system-type 'ms-dot)))
+(defconst *nice-ui* (if *is-windows* nil t))
 
 
 ;; Adjust garbage collection thresholds during startup, and thereafter
@@ -41,14 +45,18 @@
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
 
-;; (require 'init-package)
-;;; use-package	(require 'init-package)
-(setq use-package-always-ensure t)	
+;;; Package config for Linux & Mac
+(if (or *is-linux* *is-a-mac*)
+    (require 'init-package))
 
-(unless (package-installed-p 'use-package)	
-  (package-refresh-contents)	
-  (package-install 'use-package))	
-(eval-when-compile (require 'use-package))
+;;; Package config for windows
+(if *is-windows*
+    (progn
+      (setq use-package-always-ensure t)	
+      (unless (package-installed-p 'use-package)	
+        (package-refresh-contents)	
+        (package-install 'use-package))	
+      (eval-when-compile (require 'use-package))))
 
 
 ;; Allow users to provide an optional "init-preload-local.el"
@@ -78,8 +86,8 @@
 (require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-hippie-expand)
-(require 'init-company)
-;; (require 'init-corfu)
+;; (require 'init-company)
+(require 'init-corfu)
 ;; (require 'init-windows)
 (require 'init-sessions)
 (require 'init-mmm)
