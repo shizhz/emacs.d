@@ -8,7 +8,7 @@
 (setq read-process-output-max (* 1024 1024))
 
 (use-package eglot
-  :hook ((go-mode) . eglot-ensure)
+  :hook ((go-mode js-mode) . eglot-ensure)
   :config
   (setq-default eglot-workspace-configuration
                 '((:gopls . ((gofumpt . t)
