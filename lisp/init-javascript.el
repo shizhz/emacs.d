@@ -7,6 +7,13 @@
 (maybe-require-package 'typescript-mode)
 (maybe-require-package 'prettier-js)
 
+(use-package js2-refactor
+  :init
+  (setq js2-skip-preprocessor-directives t)
+  :hook ((js-mode) . js2-refactor-mode)
+  :config
+  (js2r-add-keybindings-with-prefix "C-c C-r"))
+
 
 ;;; Basic js-mode setup
 
