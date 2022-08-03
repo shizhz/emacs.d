@@ -52,6 +52,8 @@
   ("C-c o z" . origami-open-node)
   ("C-c o c" . origami-close-node))
 
+(use-package restclient)
+(add-to-list 'auto-mode-alist '("\\.rest\\" . restclient-mode))
 
 ;;; Font
 ;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
@@ -70,5 +72,6 @@
 ;;; Display relative line number, this needs Emacs version > 28
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
+(setq tab-width 4)
 
 (provide 'init-local)
