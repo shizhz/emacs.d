@@ -53,7 +53,7 @@
   ("C-c o c" . origami-close-node))
 
 (use-package restclient)
-(add-to-list 'auto-mode-alist '("\\.rest\\" . restclient-mode))
+(add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode))
 
 ;;; Font
 ;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
@@ -73,5 +73,6 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 (setq tab-width 4)
+(setq max-lisp-eval-depth 30000)
 
 (provide 'init-local)
