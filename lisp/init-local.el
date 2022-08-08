@@ -53,7 +53,12 @@
   ("C-c o c" . origami-close-node))
 
 (use-package restclient)
-(add-to-list 'auto-mode-alist '("\\.rest\\" . restclient-mode))
+(add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode))
+
+(use-package kubernetes)
+(use-package kubernetes-evil
+  :ensure t
+  :after kubernetes)
 
 ;;; Font
 ;;(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
