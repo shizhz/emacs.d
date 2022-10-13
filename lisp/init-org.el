@@ -396,8 +396,8 @@ typical word processor."
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-(setq fill-column 120)
-(add-hook 'org #'auto-fill-mode)
+;; add-hook 'org-mode-hook 'org-indent-mode) ;; No idea it does not work
+(setq org-startup-indented t)           ;; This works
 
 (provide 'init-org)
 ;;; init-org.el ends here
