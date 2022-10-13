@@ -78,5 +78,6 @@
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 (setq tab-width 4)
+(setq max-lisp-eval-depth 30000)
 
 (provide 'init-local)

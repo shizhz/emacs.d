@@ -8,6 +8,8 @@
 (use-package format-all
   :hook ((
           protobuf-mode
+          js-mode
+          json-mode
           ) . format-all-mode)
   )
 
