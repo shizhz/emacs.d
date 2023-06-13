@@ -27,6 +27,12 @@
   (define-key evil-insert-state-map (kbd "C-a") 'evil-first-non-blank)
   (evil-mode 1))
 
+(use-package evil-leader
+  :after evil
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader ","))
+
 ;;; Speed up motion
 (use-package evil-easymotion
   :disabled
@@ -54,7 +60,7 @@
   (avy-default-keybindings "SPC")
   )
 
-;;; Make text-exchange easy
+;; Make text-exchange easy
 (use-package evil-exchange
   :config
   (setq evil-exchange-key (kbd "zx"))
@@ -67,7 +73,7 @@
 
 (use-package evil-traces
   :config
-  (evil-traces-use-diff-faces) ; if you want to use diff's faces
+  (evil-traces-use-diff-faces) ; if you want to use diffs faces
   (evil-traces-mode))
 
 ;; (use-package evil-quick-diff

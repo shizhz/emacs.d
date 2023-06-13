@@ -3,7 +3,11 @@
 
 ;;; Code:
 
-(use-package protobuf-mode)
+(use-package protobuf-mode
+  :mode "\\.proto\\'"
+  :config
+  (add-hook 'before-save-hook #'eglot-format)
+  )
 
 (use-package ace-window
   :config
@@ -79,5 +83,73 @@
 (setq display-line-numbers-type 'relative)
 (setq tab-width 4)
 (setq max-lisp-eval-depth 30000)
+
+;; tree-sitter
+(use-package tree-sitter)
+(use-package tree-sitter-langs)
+(global-tree-sitter-mode)
+(use-package evil-textobj-tree-sitter :ensure t)
+
+;; bind `function.outer`(entire function block) to `f` for use in things like `vaf`, `yaf`
+(define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
+;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
+(define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
+
+;; You can also bind multiple items and we will match the first one we can find
+(define-key evil-outer-text-objects-map "a" (evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer")))
+
+
+;; See more textobj from https://github.com/nvim-treesitter/nvim-treesitter-textobjects#built-in-textobjects
+;; Goto start of next function
+(define-key evil-normal-state-map (kbd "]f") (lambda ()
+                                               (interactive)
+                                               (evil-textobj-tree-sitter-goto-textobj "function.outer")))
+;; Goto start of previous function
+(define-key evil-normal-state-map (kbd "[f") (lambda ()
+                                               (interactive)
+                                               (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
+;; Goto end of next function
+(define-key evil-normal-state-map (kbd "]F") (lambda ()
+                                               (interactive)
+                                               (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
+;; Goto end of previous function
+(define-key evil-normal-state-map (kbd "[F") (lambda ()
+                                               (interactive)
+                                               (evil-textobj-tree-sitter-goto-textobj "function.outer" t t)))
+
+;; fancy-narrow
+(use-package fancy-narrow
+  :after evil
+  :commands (fancy-narrow-to-region fancy-widen evil-fancy-narrow)
+  :config
+  ;; TODO: remove extra args
+  (evil-define-operator evil-fancy-narrow (beg end type register _handler)
+    "Narrow to region"
+    :move-point nil
+    :repeat nil
+    (interactive "<R><x><y>")
+    (fancy-narrow-to-region beg end))
+  (defun shizhz/narrow-region-dwim (&optional basic)
+    "Narrow or widen the region (dwim)."
+    (interactive)
+    (if (eq evil-state 'visual)
+        (if basic
+            (call-interactively 'narrow-to-region)
+          (call-interactively 'fancy-narrow-to-region))
+      (if basic
+          (call-interactively 'widen)
+        (call-interactively 'fancy-widen))))
+  :init
+  (define-key evil-normal-state-map (kbd "C-x n n") 'fancy-narrow-region)
+  (define-key evil-normal-state-map (kbd "C-x n f") 'fancy-narrow-to-defun)
+  (define-key evil-normal-state-map (kbd "C-x n w") 'fancy-widen)
+  (define-key evil-normal-state-map (kbd "C-x n p") 'fancy-narrow-to-page))
+
+;; evil-multiedit, multiple-cursors init in init-editing-utils.el has been commented
+(use-package evil-multiedit)
+(evil-multiedit-default-keybinds)
+
+;; defined in init-envars.el
+(setenv-file-set-envars-hooks)
 
 (provide 'init-local)

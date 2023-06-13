@@ -6,11 +6,15 @@
 (use-package go-mode
   :mode "\\.go\\'"
   :config
-  (add-hook 'before-save-hook '(lambda ()
-                                 ;; Don't change the order, otherwise eglot-code-action-organize-imports will raise an error if there no code action, which will interrupt the call to eglot-format
-                                 (call-interactively #'eglot-format)
-                                 (call-interactively #'eglot-code-action-organize-imports)
-                                 ))
+  ;; Refer to https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook #'(lambda ()
+                                  ;; Call this command first, otherwise unused imports will not be removed automatically(No idea why)
+                                  (call-interactively #'gofmt-before-save)
+                                  ;; Don't change the order, otherwise eglot-code-action-organize-imports will raise an error if there no code action, which will interrupt the call to eglot-format
+                                  (call-interactively #'eglot-format)
+                                  (call-interactively #'eglot-code-action-organize-imports)
+                                  ))
   )
 
 (use-package go-tag
@@ -24,6 +28,8 @@
               ("C-c g g" . go-gen-test-dwim)))
 
 (use-package gotest
+  :config
+  (setq go-test-verbose 1)
   :bind (:map go-mode-map
               ("C-c g f" . go-test-current-file)
               ("C-c g t" . go-test-current-test)

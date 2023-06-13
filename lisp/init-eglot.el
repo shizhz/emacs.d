@@ -8,8 +8,9 @@
 (setq read-process-output-max (* 1024 1024))
 
 (use-package eglot
-  :hook ((go-mode js-mode) . eglot-ensure)
+  :hook ((go-mode js-mode protobuf-mode python-mode) . eglot-ensure)
   :config
+  (add-to-list 'eglot-server-programs '(protobuf-mode . ("~/bin/protobuf-ls")))
   (setq-default eglot-workspace-configuration
                 '((:gopls . ((gofumpt . t)
                              ;; (usePlaceholders . t)
@@ -25,7 +26,7 @@
   (define-key eglot-mode-map (kbd "C-c e i") #'eglot-find-implementation)
   )
 
-  (use-package consult-eglot)
+(use-package consult-eglot)
 
 (provide 'init-eglot)
 ;;; init-eglot.el ends here

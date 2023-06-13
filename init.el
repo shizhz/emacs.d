@@ -67,6 +67,7 @@
 (maybe-require-package 'scratch)
 (require-package 'command-log-mode)
 
+(require 'init-envars)
 (require 'init-evil)
 (require 'init-frame-hooks)
 (require 'init-xterm)

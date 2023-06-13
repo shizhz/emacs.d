@@ -55,3 +55,5 @@ site-lisp/package/
 /smex-items
 /eln-cache/
 /projects
+straight
+projectile.cache
