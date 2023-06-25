@@ -18,16 +18,19 @@
   )
 
 (use-package go-tag
+  :after (go-mode)                      ; otherwise the following keybindings will not take effect, cos go-mode-map only exists after go-mode loaded
   :bind (:map go-mode-map
               ("C-c g a" . go-tag-add)
               ("C-c g d" . go-tag-remove))
   :init (setq go-tag-args (list "-transform" "snakecase")))
 
 (use-package go-gen-test
+  :after (go-mode)
   :bind (:map go-mode-map
               ("C-c g g" . go-gen-test-dwim)))
 
 (use-package gotest
+  :after (go-mode)
   :config
   (setq go-test-verbose 1)
   :bind (:map go-mode-map

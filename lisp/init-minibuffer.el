@@ -16,8 +16,13 @@
 
   (when (maybe-require-package 'embark)
     (with-eval-after-load 'vertico
+      (define-key vertico-map (kbd "C-c C-d") 'embark-dwim)
+      (define-key vertico-map (kbd "C-c C-a") 'embark-act-all)
       (define-key vertico-map (kbd "C-c C-o") 'embark-export)
       (define-key vertico-map (kbd "C-c C-c") 'embark-act)))
+
+  (global-set-key (kbd "M-<return>") 'embark-act)
+  (global-set-key (kbd "M-S-<return>") 'embark-dwim)
 
   (when (maybe-require-package 'consult)
     (defmacro sanityinc/no-consult-preview (&rest cmds)

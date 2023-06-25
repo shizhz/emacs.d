@@ -30,8 +30,7 @@
 (use-package evil-leader
   :after evil
   :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader ","))
+  (global-evil-leader-mode))
 
 ;;; Speed up motion
 (use-package evil-easymotion
@@ -58,6 +57,7 @@
   (define-key avy-map "jt" #'avy-goto-char-timer)
   (define-key avy-map "jl" #'avy-goto-line)
   (avy-default-keybindings "SPC")
+  (global-set-key (kbd "C-'") 'avy-goto-char-timer)
   )
 
 ;; Make text-exchange easy

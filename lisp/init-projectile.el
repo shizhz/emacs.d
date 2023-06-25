@@ -156,6 +156,7 @@
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
 
+(setq projectile-indexing-method 'native)
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

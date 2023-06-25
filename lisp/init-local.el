@@ -150,6 +150,15 @@
 (evil-multiedit-default-keybinds)
 
 ;; defined in init-envars.el
-(setenv-file-set-envars-hooks)
+;; (setenv-file-set-envars-hooks)
+(global-set-key (kbd "C-M-v") 'scroll-other-window)
+(global-set-key (kbd "C-M-V") 'scroll-other-window-down)
+
+(use-package evil-owl
+  :config
+  (setq evil-owl-display-method 'posframe
+        evil-owl-extra-posframe-args '(:width 50 :height 20)
+        evil-owl-max-string-length 50)
+  (evil-owl-mode))
 
 (provide 'init-local)

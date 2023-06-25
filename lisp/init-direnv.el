@@ -9,7 +9,7 @@
       (envrc-global-mode)))
 
   (with-eval-after-load 'envrc
-    (define-key envrc-mode-map (kbd "C-c e") 'envrc-command-map))
+    (define-key envrc-mode-map (kbd "C-c v") 'envrc-command-map))
   (add-hook 'after-init-hook 'sanityinc/maybe-enable-envrc-global-mode))
 
 (provide 'init-direnv)

@@ -21,6 +21,7 @@
                              (allowModfileModifications . t)
                              ))))
   (define-key eglot-mode-map (kbd "C-c e n") #'flymake-goto-next-error)
+  (define-key eglot-mode-map (kbd "C-c e R") #'eglot-reconnect)
   (define-key eglot-mode-map (kbd "C-c e p") #'flymake-goto-prev-error)
   (define-key eglot-mode-map (kbd "C-c e r") #'eglot-rename)
   (define-key eglot-mode-map (kbd "C-c e i") #'eglot-find-implementation)

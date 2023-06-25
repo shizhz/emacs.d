@@ -84,18 +84,12 @@
 (require 'f)
 (require 's)
 
-;;; Options
+(defvar setenv-file-dir (expand-file-name "~/"))
 
-(defgroup setenv-file nil
-  "Source environment variable files in Emacs."
-  :group 'environment
-  :prefix "setenv-file-"
-  :link '(url-link :tag "GitHub" "https://github.com/cfclrk/setenv-file"))
-
-(defcustom setenv-file-dir (expand-file-name "~/")
-  "Directory with env files."
-  :group 'setenv-file
-  :type 'file)
+;; Load .env file content as environment variables
+(defvar setenv-file-dotenv-file-name ".env"
+  "The name of the .env file"
+  )
 
 ;;; Public
 
@@ -220,10 +214,6 @@ completely removes the variable from `process-environment'."
   (--map (car (s-split "=" it)) process-environment))
 
 
-;; Load .env file content as environment variables
-(defvar setenv-file-dotenv-file-name ".env"
-  "The name of the .env file"
-  )
 
 ;; Find .env file from current directory up to the project root directory
 (defun setenv-file-find-env-file ()
