@@ -13,6 +13,7 @@
               auto-mode-alist))
 
 (setq python-shell-interpreter "python3")
+(setq python-shell-completion-native-enable nil)
 
 (require-package 'pip-requirements)
 

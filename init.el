@@ -67,7 +67,6 @@
 (maybe-require-package 'scratch)
 (require-package 'command-log-mode)
 
-;; (require 'init-envars)
 (require 'init-evil)
 (require 'init-frame-hooks)
 (require 'init-xterm)
@@ -82,13 +81,13 @@
 (require 'init-snippet)
 ;; (require 'init-flymake)
 (require 'init-eglot)
+(require 'init-corfu)
 ;; (require 'init-lsp-bridge)
 
 (require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-hippie-expand)
 ;; (require 'init-company)
-(require 'init-corfu)
 ;; (require 'init-windows)
 (require 'init-sessions)
 (require 'init-mmm)

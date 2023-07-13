@@ -7,6 +7,13 @@
 (maybe-require-package 'typescript-mode)
 (maybe-require-package 'prettier-js)
 
+(add-hook 'js-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook 'prettier-js-mode)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+
+(add-hook 'js-mode-hook (lambda () (add-hook 'after-save-hook #'prettier-js)))
+(add-hook 'js2-mode-hook (lambda () (add-hook 'after-save-hook #'prettier-js)))
+
 (use-package js2-refactor
   :init
   (setq js2-skip-preprocessor-directives t)

@@ -8,13 +8,13 @@
 (setq read-process-output-max (* 1024 1024))
 
 (use-package eglot
-  :hook ((go-mode js-mode protobuf-mode python-mode) . eglot-ensure)
+  :hook '((go-mode js-mode protobuf-mode python-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs '(protobuf-mode . ("~/bin/protobuf-ls")))
   (setq-default eglot-workspace-configuration
                 '((:gopls . ((gofumpt . t)
-                             ;; (usePlaceholders . t)
-                             ;; (matcher . "CaseInsensitive")
+                             (usePlaceholders . t)
+                             (matcher . "CaseInsensitive")
                              (completeUnimported . t)
                              (annotations . ((bounds . t) (escape . t) (inline . t) (nil . t)))
                              (analyses . ((unusedparams . t) (unusedwrite . t)))
