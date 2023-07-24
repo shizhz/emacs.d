@@ -190,6 +190,7 @@
 
 ;; (require 'init-formatter)
 (require 'init-go)
+(require 'init-treesit)
 
 ;; Allow users to provide an optional "init-local" containing personal settings
 (require 'init-local nil t)

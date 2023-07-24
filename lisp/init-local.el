@@ -29,13 +29,13 @@
   (define-key evil-insert-state-map (kbd "C-a") 'mwim-beginning-of-code-or-line)
   (define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line))
 
-(use-package tree-sitter
-  :disabled
-  :config
-  (use-package tree-sitter-langs
-    :ensure t)
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; (use-package tree-sitter
+;;   :disabled
+;;   :config
+;;   (use-package tree-sitter-langs
+;;     :ensure t)
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (use-package minimap
   :ensure t
@@ -84,38 +84,6 @@
 (setq tab-width 4)
 (setq max-lisp-eval-depth 30000)
 
-;; tree-sitter
-(use-package tree-sitter)
-(use-package tree-sitter-langs)
-(global-tree-sitter-mode)
-(use-package evil-textobj-tree-sitter :ensure t)
-
-;; bind `function.outer`(entire function block) to `f` for use in things like `vaf`, `yaf`
-(define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
-;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
-(define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
-
-;; You can also bind multiple items and we will match the first one we can find
-(define-key evil-outer-text-objects-map "a" (evil-textobj-tree-sitter-get-textobj ("conditional.outer" "loop.outer")))
-
-
-;; See more textobj from https://github.com/nvim-treesitter/nvim-treesitter-textobjects#built-in-textobjects
-;; Goto start of next function
-(define-key evil-normal-state-map (kbd "]f") (lambda ()
-                                               (interactive)
-                                               (evil-textobj-tree-sitter-goto-textobj "function.outer")))
-;; Goto start of previous function
-(define-key evil-normal-state-map (kbd "[f") (lambda ()
-                                               (interactive)
-                                               (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
-;; Goto end of next function
-(define-key evil-normal-state-map (kbd "]F") (lambda ()
-                                               (interactive)
-                                               (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
-;; Goto end of previous function
-(define-key evil-normal-state-map (kbd "[F") (lambda ()
-                                               (interactive)
-                                               (evil-textobj-tree-sitter-goto-textobj "function.outer" t t)))
 
 ;; fancy-narrow
 (use-package fancy-narrow
@@ -152,13 +120,13 @@
 ;; defined in init-envars.el
 ;; (setenv-file-set-envars-hooks)
 (global-set-key (kbd "C-M-v") 'scroll-other-window)
-(global-set-key (kbd "C-M-V") 'scroll-other-window-down)
+(global-set-key (kbd "C-M-S-v") 'scroll-other-window-down)
 
-(use-package evil-owl
-  :config
-  (setq evil-owl-display-method 'posframe
-        evil-owl-extra-posframe-args '(:width 50 :height 20)
-        evil-owl-max-string-length 50)
-  (evil-owl-mode))
+;; (use-package evil-owl
+;;   :config
+;;   (setq evil-owl-display-method 'posframe
+;;         evil-owl-extra-posframe-args '(:width 50 :height 20)
+;;         evil-owl-max-string-length 50)
+;;   (evil-owl-mode))
 
 (provide 'init-local)
