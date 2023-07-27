@@ -23,7 +23,10 @@
 ;; Use paredit in the minibuffer
 ;; TODO: break out into separate package
 ;; http://emacsredux.com/blog/2013/04/18/evaluate-emacs-lisp-in-the-minibuffer/
-(add-hook 'minibuffer-setup-hook 'sanityinc/conditionally-enable-paredit-mode)
+;;
+;; FIXME: there's a problem after upgrading to emacs master branch: the RET key is bound to paredit-RET, which opens a new line rather than submit and eval the expression.
+;; So this hook is disabled for now, there's no too much requirement for me to edit s-expression in minibuffer
+;; (add-hook 'minibuffer-setup-hook 'sanityinc/conditionally-enable-paredit-mode)
 
 (defvar paredit-minibuffer-commands '(eval-expression
                                       pp-eval-expression
