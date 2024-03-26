@@ -34,7 +34,10 @@
   (add-hook 'emacs-startup-hook
             (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
+
 ;; Bootstrap config
+
+
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
@@ -55,13 +58,7 @@
         (package-install 'use-package))	
       (eval-when-compile (require 'use-package))))
 
-;;; benchmark init time
-(use-package benchmark-init
-  :ensure t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
-
+
 ;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
 
@@ -70,35 +67,31 @@
 (maybe-require-package 'scratch)
 (require-package 'command-log-mode)
 
-;; init evil
 (require 'init-evil)
-
-;; lsp client
-
-;; eglot作为lsp-client总是有点慢，每次补全都有卡顿感，与vs code的体感差异太大了
-; (require 'init-eglot)
-; (require 'init-corfu)
-
-; 以下是lsp-bridge的配置，为了方便升级，使用源码clone下来的方式安装
-(require 'init-lsp-bridge)
-
-;; init programming modes 
-(require 'init-go)
-(require 'init-rust)
-
-; init how emacs looks
-(require 'init-appearance)
+(require 'init-frame-hooks)
 (require 'init-xterm)
+(require 'init-themes)
 (require 'init-osx-keys)
+(require 'init-gui-frames)
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
+(require 'init-snippet)
+;; (require 'init-flymake)
+(require 'init-eglot)
+(require 'init-corfu)
+;; (require 'init-lsp-bridge)
+
 (require 'init-recentf)
 (require 'init-minibuffer)
 (require 'init-hippie-expand)
+;; (require 'init-company)
+;; (require 'init-windows)
+;; (require 'init-sessions)
 (require 'init-mmm)
+
 (require 'init-editing-utils)
 (require 'init-whitespace)
 
@@ -113,7 +106,7 @@
 (require 'init-crontab)
 (require 'init-textile)
 (require 'init-markdown)
-;(require 'init-csv)
+(require 'init-csv)
                                         ; (require 'init-erlang)
 ;; (require 'init-javascript)
 ;; (require 'init-php)
@@ -206,3 +199,8 @@
 
 (provide 'init)
 
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: t
+;; End:
+;;; init.el ends here

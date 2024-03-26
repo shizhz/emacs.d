@@ -20,7 +20,9 @@
    ;                     ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (setq package-archives '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")
-                         ("nongnu" . "http://mirrors.ustc.edu.cn/elpa/nongnu/")))
+                         ("nongnu" . "http://mirrors.ustc.edu.cn/elpa/nongnu/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ))
 ;; (add-to-list 'package-archives '( "melpa" . "https://melpa.org/packages/") t)
 ;; Official MELPA Mirror, in case necessary.
 ;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
@@ -68,7 +70,7 @@ locate PACKAGE."
 
 ;;; Fire up package.el
 
-(setq package-enable-at-startup nil)
+(setq package-enable-at-startup t)
 (package-initialize)
 
 
@@ -122,7 +124,6 @@ advice for `require-package', to which ARGS are passed."
       (sanityinc/set-tabulated-list-column-width "Archive" longest-archive-name))))
 
 (add-hook 'package-menu-mode-hook 'sanityinc/maybe-widen-package-menu-columns)
-
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here

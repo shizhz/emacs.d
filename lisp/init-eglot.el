@@ -9,7 +9,7 @@
 
 (use-package eglot
   ;; Setup jdtls for java
-  :hook '((java-mode go-mode go-ts-mode js-mode protobuf-mode python-mode python-ts-mode) . eglot-ensure)
+  :hook '((java-mode go-mode go-ts-mode js-mode protobuf-mode python-mode python-ts-mode rust-mode) . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs `(protobuf-mode . ("~/bin/protobuf-ls")))
   (add-to-list 'eglot-server-programs `(python-mode . ("pyright-langserver" "--stdio")))

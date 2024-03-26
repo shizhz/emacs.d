@@ -26,5 +26,14 @@
   (with-eval-after-load 'dired
     (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
 
+; https://github.com/alexluigit/dirvish
+; (use-package dirvish)
+; (dirvish-override-dired-mode)
+
+
+; Try https://github.com/punassuming/ranger.el
+(use-package ranger)
+(setq ranger-cleanup-on-disable t)
+
 (provide 'init-dired)
 ;;; init-dired.el ends here

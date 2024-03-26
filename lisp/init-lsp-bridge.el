@@ -4,25 +4,28 @@
 
 ;;; Code:
 
-(use-package posframe)
-
-
-(add-to-list 'load-path "~/Projects/lsp-bridge")
-
-(require 'yasnippet)
-(yas-global-mode 1)
-
+(require 'init-snippet)
+(add-to-list 'load-path "~/Tools/lsp-bridge")
 (require 'lsp-bridge)
+; (setq acm-backend-lsp-candidate-min-length 2)
+(setq acm-backend-yas-candidate-min-length 2)
+(setq acm-backend-search-file-words-candidate-min-length 2)
+(setq acm-backend-lsp-match-mode "fuzzy")
 
-(with-eval-after-load 'lsp-bridge
-  (define-key acm-mode-map (kbd "C-n") #'acm-select-next)
-  (define-key acm-mode-map (kbd "C-p") #'acm-select-prev)
-  (define-key acm-mode-map (kbd "C-,") #'acm-select-last)
-  (define-key acm-mode-map (kbd "C-.") #'acm-select-first)
-  (define-key acm-mode-map (kbd "C-S-n") #'acm-select-next-page)
-  (define-key acm-mode-map (kbd "C-S-p") #'acm-select-prev-page)
-		 )
+;; acm completion keybindings are changed in source file acm.el as followings:
+;; C-n: select next
+;; C-p: select prev
+;; M-n: select last
+;; M-p: select first
+;; C-S-n: next page
+;; C-S-n: prev page
+;; To make it works in evil mode, commands [evil-complete-next, evil-complete-previous] are also remap to related acm commands
+
+;; TODO:
+;; 1. 删除字符时补全框消失了，希望不要消失
+;; 2. 补全框消失后，希望有快捷键能够重新trigger补全动作
 
 (global-lsp-bridge-mode)
+
 
 (provide 'init-lsp-bridge)

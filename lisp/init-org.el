@@ -399,5 +399,6 @@ typical word processor."
 ;; add-hook 'org-mode-hook 'org-indent-mode) ;; No idea it does not work
 (setq org-startup-indented t)           ;; This works
 
+
 (provide 'init-org)
 ;;; init-org.el ends here
